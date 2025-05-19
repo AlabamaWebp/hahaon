@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private http: HttpClient
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {  }
   woman = false;
   file?: File;
   src?: string;
@@ -53,13 +53,20 @@ export class AppComponent implements OnInit {
     const blob = new Blob([file], { type: file.type });
     formData.append("image", blob, file.name);
     this.http
-      .post("http://localhost:8000", formData)
-      .subscribe((e: any) => {
+      .post("http://localhost:8000", formData, {responseType: "arraybuffer"})
+      .subscribe({next: (e: any) => {
         this.data = {
           weight: e[0],
           height: e[1],
         };
-      });
+      }, error: (e: any ) => {
+        e.status === 510 ? alert('На фото не обнаружено силуета'): 0;
+      }},
+      );
+  }
+
+  checkError(){
+    
   }
 }
 interface data {

@@ -37,6 +37,9 @@
 
 <div class="wrapper">
   <div class="content">
+    <div class="column ">
+      <h3 class="title">Загрузите свое фото</h3>
+    </div>
     <div class="column">
       <div class="img">
         @if (!src) {
@@ -51,9 +54,19 @@
     <div class="column mini">
       <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
     </div>
-    <div class="column">
-      <div class="krik"></div>
-      <div class="krik dyshi"></div>
-    </div>
+    @if (data){
+      <div class="column jcsb">
+        <div class="krik">
+          <span>Рост:  {{data.height}} </span>
+        </div>
+        <div class="krik">
+          <span>Вес: {{data.weight}} </span>
+        </div>
+      </div>
+    }
+
   </div>
 </div>
+
+
+<!-- <input type="color" (chage)="con($event)"> -->
