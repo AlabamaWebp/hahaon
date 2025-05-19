@@ -1,12 +1,14 @@
 <div class="wrapper">
+  <div class="content">
   @if (!src) {
-    <ng-container [ngTemplateOutlet]="base"></ng-container>
+    <div class="no-photo">Нет фото</div>
   }
-  @else {
-    <!-- <img id="preview" [src]="src" class="img" /> -->
-     <div class="photo" [style.backgroundImage]="`url(${src})`"></div>
+  @if (src) {
+    <div class="photo" [style.backgroundImage]="`url(${src})`"></div>
     <div class="megacol">
-      <ng-container [ngTemplateOutlet]="base"></ng-container>
+      <div class="col">
+        <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
+      </div>
       @if (data) {
         <div class="col">
           <h2>Параметры</h2>
@@ -16,18 +18,13 @@
       }
     </div>
   }
-</div>
-
-
-<ng-template #base>
-  <div class="col">
-    <mat-button-toggle-group [value]="woman">
-      <mat-button-toggle [value]="true">Женщина</mat-button-toggle>
-      <mat-button-toggle [value]="false">Мужчина</mat-button-toggle>
-    </mat-button-toggle-group>
-    <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
+  @else {
+    <div class="col">
+      <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
+    </div>
+  }
   </div>
-</ng-template>
+</div>
 
 <input
   id="f1"
