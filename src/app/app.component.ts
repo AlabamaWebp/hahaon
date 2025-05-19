@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
     const blob = new Blob([file], { type: file.type });
     formData.append("image", blob, file.name);
     this.http
-      .post("http://localhost:8000", formData, {responseType: "arraybuffer"})
+      .post("http://0.0.0.0:8000/neuro", formData, {responseType: "arraybuffer"})
       .subscribe({next: (e: any) => {
         this.data = {
           weight: e[0],
