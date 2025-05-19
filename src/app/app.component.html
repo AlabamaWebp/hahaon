@@ -3,8 +3,9 @@
     <ng-container [ngTemplateOutlet]="base"></ng-container>
   }
   @else {
-    <img id="preview" [src]="src" class="img" />
-    <div class="col">
+    <!-- <img id="preview" [src]="src" class="img" /> -->
+     <div class="photo" [style.backgroundImage]="`url(${src})`"></div>
+    <div class="megacol">
       <ng-container [ngTemplateOutlet]="base"></ng-container>
       @if (data) {
         <div class="col">

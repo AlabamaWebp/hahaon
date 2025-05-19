@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import {} from "@angular/router";
 import { CrudService } from "./shared/serves/crud.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -24,7 +24,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
   ],
 })
 export class AppComponent implements OnInit {
-  constructor(public crud: CrudService) {}
+  constructor(public crud: CrudService, private cdr: ChangeDetectorRef) {}
   ngOnInit(): void {}
   woman = false;
   file?: File;
@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
     if (!file) return;
     this.src = URL.createObjectURL(file);
     this.file = file;
+    this.cdr.detectChanges();
     this.uploPhoto(file);
   }
   uploPhoto(file: File) {
