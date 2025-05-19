@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpRequest, HttpResponse } from "@angular/common/http";
 import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import {} from "@angular/router";
 import { CrudService } from "./shared/serves/crud.service";
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
     const blob = new Blob([file], { type: file.type });
     formData.append("image", blob, file.name);
     this.http
-      .post("http://localhost:8000/api/neuro/", formData, {responseType: "arraybuffer"})
+      .post("http://0.0.0.0:8000/api/neuro/", formData,)
       .subscribe({next: (e: any) => {
         this.data = {
           weight: e[0],
