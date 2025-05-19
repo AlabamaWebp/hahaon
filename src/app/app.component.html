@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
   <div class="content">
   @if (!src) {
     <div class="no-photo">Нет фото</div>
@@ -25,6 +25,7 @@
   }
   </div>
 </div>
+-->
 
 <input
   id="f1"
@@ -32,4 +33,27 @@
   accept="image/*"
   (change)="getPhoto($event)"
   style="display: none"
-/>
+>
+
+<div class="wrapper">
+  <div class="content">
+    <div class="column">
+      <div class="img">
+        @if (!src) {
+          <div class="no-photo"><span class="no-photo-text">Нет фото</span></div>
+        }
+        @if (src) {
+          <div class="photo" [style.backgroundImage]="`url(${src})`"></div>
+        } 
+      </div>
+    </div>
+  
+    <div class="column mini">
+      <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
+    </div>
+    <div class="column">
+      <div class="krik"></div>
+      <div class="krik dyshi"></div>
+    </div>
+  </div>
+</div>
