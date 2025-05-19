@@ -24,12 +24,16 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
   ],
 })
 export class AppComponent implements OnInit {
-  constructor(public crud: CrudService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    public crud: CrudService,
+    private cdr: ChangeDetectorRef,
+    private http: HttpClient
+  ) {}
   ngOnInit(): void {}
   woman = false;
   file?: File;
   src?: string;
-  data?: data
+  data?: data;
   clickPhoto() {
     (
       document.documentElement.querySelector("#f1") as HTMLInputElement
@@ -47,10 +51,18 @@ export class AppComponent implements OnInit {
     if (!file) return;
     const formData = new FormData();
     const blob = new Blob([file], { type: file.type });
-    formData.append("photo", blob, file.name);
+    formData.append("image", blob, file.name);
+    this.http
+      .post("http://localhost:8000", formData)
+      .subscribe((e: any) => {
+        this.data = {
+          weight: e[0],
+          height: e[1],
+        };
+      });
   }
 }
 interface data {
-  weight: number
-  height: number
+  weight: number;
+  height: number;
 }
