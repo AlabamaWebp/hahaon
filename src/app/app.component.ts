@@ -56,8 +56,8 @@ export class AppComponent implements OnInit {
       .post("http://0.0.0.0:8000/api/neuro/", formData,)
       .subscribe({next: (e: any) => {
         this.data = {
-          weight: e[0],
-          height: e[1],
+          weight: e[1],
+          height: e[0],
         };
       }, error: (e: any ) => {
         e.status === 510 ? alert('На фото не обнаружено силуета'): 0;
