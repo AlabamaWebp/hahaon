@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private http: HttpClient
   ) {}
-  ngOnInit(): void {  }
+  ngOnInit(): void {}
   woman = false;
   file?: File;
   src?: string;
@@ -47,27 +47,30 @@ export class AppComponent implements OnInit {
     this.cdr.detectChanges();
     this.uploPhoto(file);
   }
+  load = false;
   uploPhoto(file: File) {
     if (!file) return;
     const formData = new FormData();
     const blob = new Blob([file], { type: file.type });
     formData.append("image", blob, file.name);
-    this.http
-      .post("http://0.0.0.0:8000/api/neuro/", formData,)
-      .subscribe({next: (e: any) => {
+    this.load = true;
+    this.http.post("http://127.0.0.1:8000/api/neuro/", formData).subscribe({
+      next: (e: any) => {
         this.data = {
-          weight: e[1],
-          height: e[0],
+          weight: e[0],
+          height: e[1],
         };
-      }, error: (e: any ) => {
-        e.status === 510 ? alert('На фото не обнаружено силуета'): 0;
-      }},
-      );
+        this.load = false
+      },
+      error: (e: any) => {
+        console.log(e);
+        e.status === 510 ? alert("На фото не обнаружено силуета") : 0;
+        this.load = false
+      },
+    });
   }
 
-  checkError(){
-    
-  }
+  checkError() {}
 }
 interface data {
   weight: number;

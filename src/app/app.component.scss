@@ -129,13 +129,10 @@ button[mat-flat-button] {
 
   .img {
     background-color: rgb(181, 180, 180);
-    // height: 70%;
-    width: 75%;
     border-radius: 10px;
     border: 3px solid rgb(245, 185, 208);
-    // padding: 5px;
     height: 100%;
-    min-height: 350px;
+    max-height: 400px;
 
     display: flex;
     justify-content: center;
