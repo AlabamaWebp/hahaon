@@ -44,14 +44,12 @@
   height: 100%;
   border-radius: 12px;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   margin: 15px 0;
   border: 2px solid #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #f1c0b2;
 }
 
 .megacol {

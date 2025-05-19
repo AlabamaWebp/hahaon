@@ -1,72 +1,38 @@
-<!-- <div class="wrapper">
-  <div class="content">
-  @if (!src) {
-    <div class="no-photo">Нет фото</div>
-  }
-  @if (src) {
-    <div class="photo" [style.backgroundImage]="`url(${src})`"></div>
-    <div class="megacol">
-      <div class="col">
-        <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
-      </div>
-      @if (data) {
-        <div class="col">
-          <h2>Параметры</h2>
-          <span>Рост: {{data.height}}</span>
-          <span>Вес: {{data.weight}}</span>
-        </div>
-      }
-    </div>
-  }
-  @else {
-    <div class="col">
-      <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
-    </div>
-  }
-  </div>
-</div>
--->
-
 <input
   id="f1"
   type="file"
   accept="image/*"
   (change)="getPhoto($event)"
   style="display: none"
->
+/>
 
 <div class="wrapper">
   <div class="content">
-    <div class="column ">
+    @if (src) {
+    <!-- <div class="column">
       <h3 class="title">Загрузите свое фото</h3>
-    </div>
+    </div> -->
     <div class="column">
       <div class="img">
-        @if (!src) {
-          <div class="no-photo"><span class="no-photo-text">Нет фото</span></div>
-        }
-        @if (src) {
-          <div class="photo" [style.backgroundImage]="`url(${src})`"></div>
-        } 
+        <div class="photo" [style.backgroundImage]="`url(${src})`"></div>
       </div>
     </div>
-  
+    }
+
     <div class="column mini">
       <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
     </div>
     @if (data){
-      <div class="column jcsb">
-        <div class="krik">
-          <span>Рост:  {{data.height}} </span>
-        </div>
-        <div class="krik">
-          <span>Вес: {{data.weight}} </span>
-        </div>
+    <div class="column jcsb">
+      <div class="krik">
+        <span>Рост: {{ data.height }} </span>
       </div>
+      <div class="krik">
+        <span>Вес: {{ data.weight }} </span>
+      </div>
+    </div>
     }
-
   </div>
 </div>
-
 
 <!-- <input type="color" (chage)="con($event)"> -->
