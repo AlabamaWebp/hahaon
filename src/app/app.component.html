@@ -1,0 +1,51 @@
+<div class="wrapper">
+  @if (!src) {
+    <ng-container [ngTemplateOutlet]="base"></ng-container>
+  }
+  @else {
+    <img id="preview" [src]="src" class="img" />
+    <div class="col">
+      <ng-container [ngTemplateOutlet]="base"></ng-container>
+      @if (data) {
+        <div class="col">
+          <h2>Параметры</h2>
+          <span>Рост: {{data.height}}</span>
+          <span>Вес: {{data.height}}</span>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<!-- <div class="wrapper">
+  <div class="content">
+    <div class="form">
+      <mat-button-toggle-group [value]="woman">
+        <mat-button-toggle [value]="true">Женщина</mat-button-toggle>
+        <mat-button-toggle [value]="false">Мужчина</mat-button-toggle>
+      </mat-button-toggle-group>
+      
+
+      <img id="preview" [src]="src" class="img" />
+    </div>
+  </div>
+</div> -->
+
+
+<ng-template #base>
+  <div class="col">
+    <mat-button-toggle-group [value]="woman">
+      <mat-button-toggle [value]="true">Женщина</mat-button-toggle>
+      <mat-button-toggle [value]="false">Мужчина</mat-button-toggle>
+    </mat-button-toggle-group>
+    <button mat-flat-button (click)="clickPhoto()">Отправить фото</button>
+  </div>
+</ng-template>
+
+<input
+  id="f1"
+  type="file"
+  accept="image/*"
+  (change)="getPhoto($event)"
+  style="display: none"
+/>
